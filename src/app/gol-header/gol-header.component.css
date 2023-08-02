@@ -1,17 +1,35 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.grid, .row, .cell {
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
 .grid {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  overflow: hidden; /* Prevent horizontal overflow */
 }
+
 
 .row {
   display: flex;
 }
 
 .cell {
-  width: 10px;
-  height: 10px;
+  flex-grow: 1;
+  width: calc(100% / number_of_columns); /* Replace with actual column count */
+  height: 10px; /* Adjust to desired cell height */
   background-color: black;
-  margin: 1px;
 }
 
 .cell.alive {
