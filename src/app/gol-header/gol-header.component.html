@@ -1,0 +1,5 @@
+<div class="grid">
+  <div *ngFor="let row of game.grid" class="row">
+    <div *ngFor="let cell of row" class="cell" [ngClass]="{'alive': cell}"></div>
+  </div>
+</div>
