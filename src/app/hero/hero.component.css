@@ -1,0 +1,17 @@
+/* hero.component.css */
+.hero-container {
+  position: relative;
+  top: 20%;
+  left: 10%;
+  z-index: 1; /* Positioned in front of the game of life backdrop */
+}
+
+.hero-title {
+  font-size: 2rem;
+  /* Additional styling... */
+}
+
+.hero-greeting {
+  font-size: 1.2rem;
+  /* Additional styling... */
+}
