@@ -1,0 +1,29 @@
+.explanation-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.text-section {
+  width: 66%;
+}
+
+.image-section {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.text {
+  font-size: 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

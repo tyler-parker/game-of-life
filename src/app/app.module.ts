@@ -8,12 +8,14 @@ import { HeroComponent } from './hero/hero.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { ConwayRulesComponent } from './conway-rules/conway-rules.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GOLHeaderComponent,
-    HeroComponent
+    HeroComponent,
+    ConwayRulesComponent
   ],
   imports: [
     BrowserModule,
