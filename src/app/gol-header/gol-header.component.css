@@ -1,10 +1,8 @@
 :host {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
-  z-index: 0; /* Positioned behind the hero component */
+  height: 400px;
+  z-index: 0;
 }
 
 .grid, .row, .cell {
@@ -20,7 +18,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  overflow: hidden; /* Prevent horizontal overflow */
+  overflow: hidden;
 }
 
 .row {
@@ -29,11 +27,21 @@
 
 .cell {
   flex-grow: 1;
-  width: calc(100% / number_of_columns); /* Replace with actual column count */
-  height: 10px; /* Adjust to desired cell height */
+  width: calc(100% / number_of_columns);
+  height: 10px;
   background-color: black;
 }
 
 .cell.alive {
   background-color: white;
+}
+
+.hero {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 60%;
+  margin: 20px;
 }

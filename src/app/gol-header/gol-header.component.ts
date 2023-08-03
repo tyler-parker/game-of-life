@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
 import { GameOfLife } from './game';
 
 @Component({
@@ -9,9 +9,9 @@ import { GameOfLife } from './game';
 export class GOLHeaderComponent implements OnInit {
   game!: GameOfLife;
   interval: any;
-  cellWidth = 10; // width of a cell in pixels
-  cellHeight = 10; // height of a cell in pixels
-  headerHeight = window.innerHeight * 0.2; // 20% of the viewport height
+  cellWidth = 10;
+  cellHeight = 10;
+  headerHeight = window.innerHeight * 0.2;
   numberOfColumns = Math.floor(window.innerWidth / this.cellWidth);
   numberOfRows = Math.floor(this.headerHeight / this.cellHeight);
 
@@ -24,18 +24,27 @@ export class GOLHeaderComponent implements OnInit {
     this.adjustGridSize();
   }
 
-  adjustGridSize() {
-    this.game = new GameOfLife(this.numberOfRows, this.numberOfColumns);
-    this.interval = setInterval(() => this.game.nextGeneration(), 100);
+  adjustGridSize(): void {
+    const { clientWidth, clientHeight } = document.documentElement;
+
+    this.numberOfColumns = Math.floor(clientWidth / this.cellWidth);
+    this.numberOfRows = Math.floor(clientHeight / this.cellHeight);
+
+    this.resetGame();
   }
 
   resetGame(event?: Event){
-    console.log('Before reset:', this.game);
-    this.adjustGridSize()
-    console.log('After reset:', this.game);
+    this.game = new GameOfLife(this.numberOfRows, this.numberOfColumns);
+    this.interval = setInterval(() => this.game.nextGeneration(), 10);
+  }
+
+  triggerReset() {
+    this.resetRequest.emit();
   }
 
   ngOnDestroy() {
     clearInterval(this.interval);
   }
+
+  @Output() resetRequest = new EventEmitter<void>();
 }
